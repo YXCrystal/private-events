@@ -1,1 +1,10 @@
-%h1 Welcome to PrivateEvents!
+%h1 All Events 
+
+- @events.each do |event|
+    .card
+        .card-body  
+            %h2= event.title 
+            %p= event.description 
+            %p= event.location 
+            %p= event.time 
+            =link_to "Join Event", events_path , class: "btn btn-primary"
