@@ -1,0 +1,12 @@
+= form_for(@event) do |f|
+    .form-group
+        = f.label :title
+        %p=f.text_field :title
+        =f.label :description
+        %p=f.text_area :description
+        =f.label :location
+        %p=f.text_field :location
+        =f.label :time
+        %p=f.text_field :time
+        =f.submit :Submit, class: 'btn btn-primary'
+
