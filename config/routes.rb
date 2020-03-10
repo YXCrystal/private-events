@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "events#index"
+  root "events#homepage"
   get "users/profile"
 
   devise_for :users
