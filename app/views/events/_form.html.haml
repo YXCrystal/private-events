@@ -7,6 +7,6 @@
         =f.label :location
         %p=f.text_field :location
         =f.label :time
-        %p=f.text_field :time
+        %p=f.datetime_select :time, :ampm => true
         =f.submit :Submit, class: 'btn btn-primary'
 
