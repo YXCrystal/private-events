@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
     
     def index
-        @events = Event.order(time: :desc) 
+        @events = Event.order(time: :asc) 
     end
     def new
         @event = Event.new
     end
 
     def create
-        @event = Event.create(event_params)
+        @event = current_user.events.create(event_params)
         if @event.save
             redirect_to @event
         else
@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
+        @user = User.find_by(id: @event.user_id)
     end
 
     private
