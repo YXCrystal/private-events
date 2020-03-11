@@ -2,4 +2,7 @@
 %p= @event.description
 %p Location: #{@event.location}
 %p Date&Time: #{@event.time.strftime("%B %d, %Y at %I:%M %p")}
-%p Hosted by: 
+- if !@user.name.nil?
+    %p Hosted by: #{@user.name}
+%p Email: #{@user.email}
+=link_to "Attend Event", users_profile_path, class: 'btn btn-primary'
