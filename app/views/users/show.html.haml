@@ -4,6 +4,8 @@
 
 %br
 %h1 Hosting Events 
+- @events.each do |event|
+    =link_to "#{event.title} - #{event.time.strftime("%B %d, %Y")}", event_path(event) 
 %br
 %hr
 %h1 Attending Events 
