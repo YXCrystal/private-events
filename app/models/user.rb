@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :events
   has_many :scheduled_events
-  has_many :attending, through: :scheduled_events, source: :events
+  has_many :attending, through: :scheduled_events, source: :event
 
 end
