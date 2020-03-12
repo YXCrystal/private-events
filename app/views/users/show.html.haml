@@ -1,13 +1,14 @@
 .container
-    %h1 Profile
-    =render 'form'
-    %hr
+    -# %h1 Profile
+    -# =render 'form'
+    -# %br
 
-    %br
-    %h1 Hosting Events 
+    
+    %h1{:class => "event_title"} Hosting Events 
     - @events.each do |event|
-        %p=link_to "#{event.title} - #{event.time.strftime("%B %d, %Y")}", event_path(event) 
-    %hr
-    %h1 Attending Events 
+        %p=link_to "#{event.title} - #{event.time.strftime("%B %d, %Y")}", event_path(event), class: 'btn btn-primary'
+    %br
+    %h1{:class => "event_title"} Attending Events 
     - @attending_events.each do |event|
-        %p=link_to "#{event.title} - #{event.time.strftime("%B %d, %Y")}", event_path(event) 
+        -if DateTime.now < event.time 
+            %p=link_to "#{event.title} - #{event.time.strftime("%B %d, %Y")}", event_path(event), class: 'btn btn-primary'

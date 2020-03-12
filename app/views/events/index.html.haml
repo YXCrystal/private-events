@@ -1,11 +1,22 @@
 .container
-    %h1 Upcoming Events 
-    %hr
-
+    
+    %h1{:class => "event_title"} Upcoming Events 
+    -@previous = []
     - @events.each do |event|
         -if DateTime.now < event.time 
             %h2= event.title 
             %p= event.location 
             %p= event.time.strftime("%B %d, %Y at %I:%M %p")
             =link_to "See more details", event_path(event) , class: "btn btn-primary"
-        %hr
+            %br
+            %br
+        -else 
+            -@previous << event
+    %br
+
+
+    %h1{:class => "event_title"} Previous Events
+    -@previous.each do |previous|
+        %h2= previous.title 
+        %p= previous.time.strftime("%B %d, %Y at %I:%M %p")
+

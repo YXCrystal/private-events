@@ -1,12 +1,14 @@
 .container 
-    %h1= @event.title
-    %hr
-    %p= @event.description
+    %h1{:class => "event_title"}= @event.title
+
+    %h3= @event.description
+    %br
     %p Location: #{@event.location}
     %p Date&Time: #{@event.time.strftime("%B %d, %Y at %I:%M %p")}
     - if !@user.name.nil?
         %p Hosted by: #{@user.name}
     %p Email: #{@user.email}
+    %p Currently attended by: #{@event.attended_by.count} people
     - if current_user
         - if @event.user_id == current_user.id 
             =link_to "Edit Event", edit_event_path(@event), class: "btn btn-warning"
@@ -15,3 +17,6 @@
             =link_to "Attend Event", attending_event_path(@event, type: "attending"), method: :put, class: 'btn btn-primary'
         - else 
             =link_to "Not Attending Event", attending_event_path(@event, type: "not-attending"), method: :put, data: {confirm: "Are you sure you do not want to attend this event?"}, class: 'btn btn-danger'
+    - else 
+        =link_to "Login", new_user_session_path, class: 'btn btn-primary'
+        =link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary'
