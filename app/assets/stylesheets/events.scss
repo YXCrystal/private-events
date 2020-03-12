@@ -1,3 +1,26 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title {
+    color: white;
+    font-size: 4rem;
+    text-shadow: 1px 1px 5px black;
+}
+.homepage {
+    text-align: center;
+    background-image: linear-gradient(to right, rgba(white, 0.3),rgba(blue, 0.4)), url("background.jpg");
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+
+    &__content {
+        padding-top: 13rem;
+
+        &--btns {
+            margin-top: 3rem;
+        }
+    }
+
+   
+}

@@ -1,10 +1,11 @@
-%h1 Upcoming Events 
-%hr
-
-- @events.each do |event|
-    -if DateTime.now < event.time 
-        %h2= event.title 
-        %p= event.location 
-        %p= event.time.strftime("%B %d, %Y at %I:%M %p")
-        =link_to "See more details", event_path(event) , class: "btn btn-primary"
+.container
+    %h1 Upcoming Events 
     %hr
+
+    - @events.each do |event|
+        -if DateTime.now < event.time 
+            %h2= event.title 
+            %p= event.location 
+            %p= event.time.strftime("%B %d, %Y at %I:%M %p")
+            =link_to "See more details", event_path(event) , class: "btn btn-primary"
+        %hr
