@@ -9,8 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
-    @events = Event.where(id: current_user.id)
+    @events = Event.where(user_id: current_user.id)
     @attending_events = current_user.attending
   end
 

@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
     
+    before_action :find_event, only: [:show, :edit, :update, :destroy]
+
     def index
-        @events = Event.order(time: :asc) 
+        @events = Event.order(time: :asc)
     end
 
     def new
@@ -18,9 +20,21 @@ class EventsController < ApplicationController
         end
     end
 
+    def edit 
+    end
+
+    def update
+        @event.update(event_params)
+        redirect_to event_path, notice: "Event has been updated"
+    end 
+
     def show
-        @event = Event.find(params[:id])
         @user = User.find_by(id: @event.user_id)
+    end
+
+    def destroy
+        @event.destroy 
+        redirect_to events_path, notice: "Event has been cancelled"
     end
 
     def attending
@@ -37,6 +51,10 @@ class EventsController < ApplicationController
 
     private
     
+    def find_event
+        @event = Event.find(params[:id])
+    end
+
     def event_params
         params.require(:event).permit(:title, :description, :location, :time)
     end
