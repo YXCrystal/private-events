@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
     
     before_action :find_event, only: [:show, :edit, :update, :destroy]
-
+    before_action :logged_in?, except: [:index, :show, :homepage]
+    
     def index
         @events = Event.order(time: :asc)
     end
